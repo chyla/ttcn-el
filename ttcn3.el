@@ -33,7 +33,7 @@
   (require 'cc-fonts))
 
 (eval-and-compile
-  (c-add-language 'ttcn-3-mode 'c-mode))
+  (c-add-language 'ttcn3-mode 'c-mode))
 
 (defconst c-TTCN3-conditional-key "do\\|else\\|for\\|if\\|while")
 (defconst c-TTCN3-comment-start-regexp "/\\([*][*]?\\)")
@@ -52,16 +52,25 @@
   ;; add bindings which are only useful for TTCN-3
   )
 
+
+(defvar c-syntactic-element)
+(declare-function c-populate-syntax-table "cc-langs.el" (table))
+
 (defvar ttcn3-mode-syntax-table nil
   "Syntax table used in TTCN-3 buffers.")
-(if ttcn3-mode-syntax-table
-    ()
-  (setq ttcn3-mode-syntax-table (make-syntax-table))
-  (c-populate-syntax-table ttcn3-mode-syntax-table))
-(modify-syntax-entry ?_ "w" ttcn3-mode-syntax-table)
+(or ttcn3-mode-syntax-table
+    (setq ttcn3-mode-syntax-table
+	 (let ((table (funcall (c-lang-const c-make-mode-syntax-table ttcn3))))
+	   (modify-syntax-entry ?_ "w" table)
+	   (modify-syntax-entry ?: "-" table)
+	   table)))
+
+(c-lang-defconst c-assignment-operators
+  ;; List of all assignment operators.
+  ttcn3 '(":="))
 
 (easy-menu-define c-ttcn3-menu ttcn3-mode-map "TTCN-3 Mode Commands"
-		  (c-mode-menu "TTCN-3"))
+  (c-mode-menu "TTCN-3"))
 
 (defvar ttcn3-imenu-generic-expression nil
   "Imenu generic expression for TTCN-3 mode.  See `imenu-generic-expression'.")
@@ -445,20 +454,22 @@ If point is on a keyword, help for that keyword will be shown."
 
 (ttcn3-add-extensions ".ttcn(3)?")
 
+(defalias 'd-parent-mode
+  (if (fboundp 'prog-mode) 'prog-mode 'fundamental-mode))
+
 ;;;###autoload
-(define-derived-mode ttcn-3-mode c-mode "TTCN-3"
+(define-derived-mode ttcn3-mode c-mode "TTCN-3"
   "Major mode for editing TTCN-3 core language.  Reference: rev. 5 of
 the BNF with changes until 2001-10.
 
 This mode is based on `CC Mode'.  Please look for further information
 in the info documenation for that mode."
-  (c-initialize-cc-mode)
-  (set-syntax-table ttcn3-mode-syntax-table)
+  (c-initialize-cc-mode t)
   (setq local-abbrev-table ttcn3-mode-abbrev-table
 	abbrev-mode t)
   (use-local-map ttcn3-mode-map)
-  (c-init-language-vars ttcn-3-mode)
-  (c-common-init 'ttcn-3-mode)
+  (c-init-language-vars ttcn3-mode)
+  (c-common-init 'ttcn3-mode)
   (setq comment-start "/* "
 	comment-end   " */"
  	c-conditional-key c-TTCN3-conditional-key

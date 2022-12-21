@@ -179,10 +179,10 @@
 	   (regexp-opt
 	    '("bit2hex" "bit2int" "bit2oct" "bit2str" "char2int" "float2int"
 	      "hex2bit" "hex2int" "hex2oct" "hex2str" "int2bit" "int2char"
-	      "int2float" "int2hex" "int2oct" "int2str" "int2unichar" "ischosen"
+	      "int2float" "int2hex" "int2oct" "int2str" "int2unichar" "isbound" "ischosen"
 	      "ispresent" "lengthof" "oct2bit" "oct2hex" "oct2int"
 	      "oct2str" "regexp" "rnd" "sizeof" "str2int" "str2oct"
-	      "substr" "unichar2int") t) "\\>")
+	      "substr" "unichar2int" "encvalue" "decvalue") t) "\\>")
 	  '(1 (ttcn3-builtin-face)))
 	 ;; TTCN-3 types
 	 (list

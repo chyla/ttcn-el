@@ -5,7 +5,7 @@
 ;; Author:     2000 W. Martin Borgert <debacle@debian.org>
 ;; Maintainer: W. Martin Borgert <debacle@debian.org>
 ;; Created:    2000-03-26
-;; Version:    ttcn3.el 2012-12-10
+;; Version:    ttcn3.el 2022-12-21
 ;; Keywords:   TTCN, languages, ASN.1
 
 ;; Author:     1997, 2000 W. Martin Borgert <debacle@debian.org>
@@ -164,7 +164,7 @@
               "message" "mixed" "mod" "modifies" "modulepar" "mtc" "none"
               "nonrecursive" "not" "not4b" "nowait" "null" "omit"
               "optional" "or" "or4b" "out" "param" "pass" "pattern"
-              "procedure" "raise" "read" "receive" "rem" "repeat"
+              "private", "procedure" "raise" "read" "receive" "rem" "repeat"
               "reply" "return" "running" "runs on" "self" "send"
               "sender" "setverdict" "signature" "start" "stop" "sut.action"
               "system" "template" "timeout" "timer" "to" "trigger"

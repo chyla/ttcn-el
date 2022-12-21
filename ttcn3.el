@@ -164,7 +164,7 @@
               "message" "mixed" "mod" "modifies" "modulepar" "mtc" "none"
               "nonrecursive" "not" "not4b" "nowait" "null" "omit"
               "optional" "or" "or4b" "out" "param" "pass" "pattern"
-              "private", "procedure" "raise" "read" "receive" "rem" "repeat"
+              "private" "procedure" "raise" "read" "receive" "rem" "repeat"
               "reply" "return" "running" "runs on" "self" "send"
               "sender" "setverdict" "signature" "start" "stop" "sut.action"
               "system" "template" "timeout" "timer" "to" "trigger"
